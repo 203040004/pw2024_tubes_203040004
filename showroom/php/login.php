@@ -60,7 +60,7 @@
                                 <button type="submit" name="submit" class="btn btn-primary w-100">Log In</button>
 
                                 <p class="mt-3">
-                                    Belum punya akun? registrasi <a href="registrasi.php">Disini</a>
+                                    Belum punya akun? registrasi <a href="register.php">Disini</a>
                                 </p>
 
                                 <button type="button" class="btn btn-secondary w-100 mt-2" onclick="location.href='../index.php'">
