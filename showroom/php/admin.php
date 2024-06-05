@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root"; // Sesuaikan dengan username database Anda
 $password = ""; // Sesuaikan dengan password database Anda
-$dbname = "pw2024_tubes_203040004.sql";
+$dbname = "pw2024_tubes_203040004";
 
 // Membuat koneksi
 $mysqli = new mysqli($servername, $username, $password, $dbname);
@@ -53,7 +53,7 @@ $mysqli->close();
                 <button type="submit" name="cari" class="btn btn-primary">Cari!</button>
             </form>
             <button type="button" class="btn btn-danger">
-                <a href="login.php" style="color: white; text-decoration: none;">Logout</a>
+                <a href="logout.php" style="color: white; text-decoration: none;">Logout</a>
             </button>
         </div>
 
@@ -78,18 +78,18 @@ $mysqli->close();
                     </tr>
                 <?php else : ?>
                     <?php $i = 1; ?>
-                    <?php foreach ($showroom as $tp) : ?>
+                    <?php foreach ($showroom as $sr) : ?>
                         <tr>
                             <td><?= $i; ?></td>
-                            <td><?= $tp["nama Mobil"]; ?></td>
-                            <td><?= $tp["merk Mesin"]; ?></td>
-                            <td><?= $tp["jenis BBM"]; ?></td>
-                            <td><?= $tp["gambar"]; ?></td>
-                           
+                            <td><?= $sr["nama Mobil"]; ?></td>
+                            <td><?= $sr["merk Mesin"]; ?></td>
+                            <td><?= $sr["jenis BBM"]; ?></td>
+                            <td><img src="../asset/<?= $sr['image']; ?>" alt="" height="50px"></td>
+
                             <td>
                                 <div class="d-flex flex-column">
-                                    <a href="ubah.php?id=<?= $tp['id']; ?>" class="btn btn-warning mb-1">Ubah</a>
-                                    <a href="hapus.php?id=<?= $tp['id']; ?>" class="btn btn-danger" onclick="return confirm('Hapus Data?')">Hapus</a>
+                                    <a href="ubah.php?id=<?= $sr['id']; ?>" class="btn btn-warning mb-1">Ubah</a>
+                                    <a href="hapus.php?id=<?= $sr['id']; ?>" class="btn btn-danger" onclick="return confirm('Hapus Data?')">Hapus</a>
                                 </div>
                             </td>
                         </tr>
