@@ -92,7 +92,7 @@ $mysqli->close();
                             <td><?= $sr["nama"]; ?></td>
                             <td><?= $sr["merk"]; ?></td>
                             <td><?= $sr["jenisBBM"]; ?></td>
-                            <td><img src="../asset/<?= $sr['image']; ?>" alt="" height="50px"></td>
+                            <td><img src="../asset/<?= $sr['image']; ?>" alt="" height="80px"></td>
 
                             <td>
                                 <div class="d-flex flex-column">

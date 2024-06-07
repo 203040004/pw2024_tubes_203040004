@@ -29,6 +29,8 @@ function tambah($data)
     $nama = htmlspecialchars($data['nama']);
     $merk = htmlspecialchars($data['merk']);
     $jenisBBM = htmlspecialchars($data['jenisBBM']);
+    $deskripsi = htmlspecialchars($data['deskripsi']);
+
     $image = uploadImage();
     if (!$image) {
         return false;
@@ -40,7 +42,9 @@ function tambah($data)
                 '$nama', 
                 '$merk', 
                 '$jenisBBM',
-                '$image')";
+                '$image'
+                '$deskripsi',
+                )";
 
     mysqli_query($conn, $query) or die(mysqli_error($conn));
 
@@ -117,6 +121,7 @@ function ubah($data)
     $name = htmlspecialchars($data["nama"]);
     $brand = htmlspecialchars($data["merk"]);
     $jenisBBM = htmlspecialchars($data["jenisBBM"]);
+    $deskripsi = htmlspecialchars($data["deskripsi"]);
     $oldImage = htmlspecialchars($data["oldImage"]);
 
     // Check if user uploaded a new image
@@ -137,9 +142,10 @@ function ubah($data)
               nama = '$name',
               merk = '$brand',
               jenisBBM = '$jenisBBM',
-              image = '$image'
+              image = '$image',
+              deskripsi = '$deskripsi'
               WHERE id = $id";
-              
+
     mysqli_query($conn, $query);
     
     return mysqli_affected_rows($conn);

@@ -65,6 +65,10 @@ if (isset($_POST["ubah"])) {
                                     <input type="text" name="jenisBBM" id="jenisBBM" class="form-control" required value="<?= $car['jenisBBM']; ?>">
                                 </div>
                                 <div class="mb-3">
+                                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                                    <input type="text" name="deskripsi" id="deskripsi" class="form-control" required value="<?= $car['deskripsi']; ?>">
+                                </div>
+                                <div class="mb-3">
                                     <label for="image" class="form-label">Image</label>
                                     <input type="file" name="image" id="image" class="form-control">
                                     <img src="../asset/<?= $car['image']; ?>" width="100" alt="Existing Image">

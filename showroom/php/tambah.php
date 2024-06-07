@@ -59,6 +59,10 @@ if (isset($_POST["tambah"])) {
                                     <input type="text" name="jenisBBM" id="jenisBBM" class="form-control" required value="<?= isset($tp['jenisBBM']) ? htmlspecialchars($tp['jenisBBM'], ENT_QUOTES, 'UTF-8') : ''; ?>">
                                 </div>
                                 <div class="mb-3">
+                                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                                    <input type="text" name="deskripsi" id="deskripsi" class="form-control" required value="<?= isset($tp['deskripsi']) ? htmlspecialchars($tp['jenisBBM'], ENT_QUOTES, 'UTF-8') : ''; ?>">
+                                </div>
+                                <div class="mb-3">
                                     <label for="image" class="form-label">image</label>
                                     <input type="file" name="image" id="image" class="form-control" required value="<?= isset($tp['image']) ? htmlspecialchars($tp['image'], ENT_QUOTES, 'UTF-8') : ''; ?>">
                                 </div>
