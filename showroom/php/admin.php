@@ -12,9 +12,17 @@ $mysqli = new mysqli($servername, $username, $password, $dbname);
 if ($mysqli->connect_error) {
     die("Koneksi gagal: " . $mysqli->connect_error);
 }
+if (isset($_GET['search'])) {
+    $keyword = $_GET['keyword'];
 
-// Mengambil data dari tabel showroom
-$sql = "SELECT * FROM showroom";
+    $sql = "SELECT * FROM showroom WHERE 
+                    `nama` LIKE '%$keyword%' OR
+                    `jenisBBM` LIKE '%$keyword%' OR
+                    `merk` LIKE '%$keyword%'";
+} else {
+    $sql = "SELECT * FROM showroom";
+}
+
 $result = $mysqli->query($sql);
 
 $showroom = [];
@@ -50,7 +58,7 @@ $mysqli->close();
             </button>
             <form action="" method="get" class="d-flex">
                 <input type="text" name="keyword" class="form-control me-2" placeholder="Search" autofocus>
-                <button type="submit" name="cari" class="btn btn-primary">Cari!</button>
+                <button type="submit" name="search" class="btn btn-primary">Cari!</button>
             </form>
             <button type="button" class="btn btn-danger">
                 <a href="logout.php" style="color: white; text-decoration: none;">Logout</a>
@@ -81,9 +89,9 @@ $mysqli->close();
                     <?php foreach ($showroom as $sr) : ?>
                         <tr>
                             <td><?= $i; ?></td>
-                            <td><?= $sr["nama Mobil"]; ?></td>
-                            <td><?= $sr["merk Mesin"]; ?></td>
-                            <td><?= $sr["jenis BBM"]; ?></td>
+                            <td><?= $sr["nama"]; ?></td>
+                            <td><?= $sr["merk"]; ?></td>
+                            <td><?= $sr["jenisBBM"]; ?></td>
                             <td><img src="../asset/<?= $sr['image']; ?>" alt="" height="50px"></td>
 
                             <td>

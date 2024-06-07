@@ -26,8 +26,8 @@ function tambah($data)
 
     $conn = koneksi();
 
-    $namaMobil = htmlspecialchars($data['namaMobil']);
-    $merkMobil = htmlspecialchars($data['merkMobil']);
+    $nama = htmlspecialchars($data['nama']);
+    $merk = htmlspecialchars($data['merk']);
     $jenisBBM = htmlspecialchars($data['jenisBBM']);
     $image = uploadImage();
     if (!$image) {
@@ -37,8 +37,8 @@ function tambah($data)
     $query = "INSERT INTO showroom
                  VALUES
                 (null, 
-                '$namaMobil', 
-                '$merkMobil', 
+                '$nama', 
+                '$merk', 
                 '$jenisBBM',
                 '$image')";
 
@@ -109,28 +109,43 @@ function hapus($id)
     return mysqli_affected_rows($conn);
 }
 
-// function untuk mengubah data produk
 function ubah($data)
 {
-    $conn = Koneksi();
+    $conn = koneksi();
 
-    $id = $data['id'];
-    $namaMobil = htmlspecialchars($data['nama mobil']);
-    $merkMesin = htmlspecialchars($data['merk mesin']);
-    $jenisBBM = htmlspecialchars($data['jenis BBM']);
+    $id = htmlspecialchars($data["id"]);
+    $name = htmlspecialchars($data["nama"]);
+    $brand = htmlspecialchars($data["merk"]);
+    $jenisBBM = htmlspecialchars($data["jenisBBM"]);
+    $oldImage = htmlspecialchars($data["oldImage"]);
 
+    // Check if user uploaded a new image
+    if ($_FILES['image']['error'] === 4) {
+        $image = $oldImage;
+    } else {
+        $image = uploadImage();
+        if (!$image) {
+            return false;
+        }
+        // Delete the old image
+        if (file_exists("../asset/" . $oldImage)) {
+            unlink("../asset/" . $oldImage);
+        }
+    }
 
-    $query = "UPDATE showroom
-                SET 
-                nama mobil = '$namaMobil',
-                merk mesin = '$merkMesin',
-                jenis BBM = '$jenisBBM',
-                WHERE id = $id";
-
-    mysqli_query($conn, $query) or die(mysqli_error($conn));
-
+    $query = "UPDATE showroom SET 
+              nama = '$name',
+              merk = '$brand',
+              jenisBBM = '$jenisBBM',
+              image = '$image'
+              WHERE id = $id";
+              
+    mysqli_query($conn, $query);
+    
     return mysqli_affected_rows($conn);
 }
+
+
 // functions untuk mencari produk
 function cari($keyword)
 {
@@ -138,8 +153,8 @@ function cari($keyword)
 
     $query = "SELECT * FROM showroom
               WHERE 
-              `nama mobil` LIKE '%$keyword%' OR
-              `merk mesin` LIKE '%$keyword%' OR
+              `nama` LIKE '%$keyword%' OR
+              `merk` LIKE '%$keyword%' OR
               `jenis BBM` LIKE '%$keyword%'";
 
     $result = mysqli_query($conn, $query);

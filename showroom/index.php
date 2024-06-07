@@ -18,8 +18,8 @@ if (isset($_GET['search'])) {
     $keyword = $_GET['keyword'];
 
     $sql = "SELECT * FROM showroom WHERE 
-                    `nama Mobil` LIKE '%$keyword%' OR
-                    `merk Mesin` LIKE '%$keyword%'";
+                    `nama` LIKE '%$keyword%' OR
+                    `merk` LIKE '%$keyword%'";
 } else {
     $sql = "SELECT * FROM showroom";
 }
@@ -108,8 +108,8 @@ $mysqli->close();
                         <div class="card">
                             <img src="asset/<?= $sr['image']; ?>" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $sr["nama Mobil"]; ?></h5>
-                                <p class="card-text"><?= $sr["nama Mobil"]; ?></p>
+                                <h5 class="card-title"><?= $sr["nama"]; ?></h5>
+                                <p class="card-text"><?= $sr["nama"]; ?></p>
                                 <a href="php/detail.php?id=<?= $sr["id"]; ?>" class="btn btn-primary">Detail Kendaraan</a>
                             </div>
                         </div>

@@ -52,17 +52,17 @@ $mysqli->close();
                                 <tr>
                                     <td><b>Nama Mobil</b></td>
                                     <td><b>:</b></td>
-                                    <td><?= htmlspecialchars($showroom['nama Mobil'], ENT_QUOTES, 'UTF-8') ?></td>
+                                    <td><?= htmlspecialchars($showroom['nama'], ENT_QUOTES, 'UTF-8') ?></td>
                                 </tr>
                                 <tr>
                                     <td><b>Merk Mobil</b></td>
                                     <td><b>:</b></td>
-                                    <td><?= htmlspecialchars($showroom['merk Mesin'], ENT_QUOTES, 'UTF-8') ?></td>
+                                    <td><?= htmlspecialchars($showroom['merk'], ENT_QUOTES, 'UTF-8') ?></td>
                                 </tr>
                                 <tr>
                                     <td><b>Jenis BBM</b></td>
                                     <td><b>:</b></td>
-                                    <td><?= htmlspecialchars($showroom['jenis BBM'], ENT_QUOTES, 'UTF-8') ?></td>
+                                    <td><?= htmlspecialchars($showroom['jenisBBM'], ENT_QUOTES, 'UTF-8') ?></td>
                                 </tr>
                                 <tr>
                                     <td><b>Gambar</b></td>
