@@ -23,7 +23,6 @@ function query($sql)
 // function untuk menambah data produk
 function tambah($data)
 {
-
     $conn = koneksi();
 
     $nama = htmlspecialchars($data['nama']);
@@ -42,14 +41,14 @@ function tambah($data)
                 '$nama', 
                 '$merk', 
                 '$jenisBBM',
-                '$image'
-                '$deskripsi',
-                )";
+                '$image',
+                '$deskripsi')";
 
     mysqli_query($conn, $query) or die(mysqli_error($conn));
 
     return mysqli_affected_rows($conn);
 }
+
 
 function uploadImage()
 {
